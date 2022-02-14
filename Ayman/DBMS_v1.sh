@@ -26,4 +26,25 @@ echo creat table with  name : $tbname.csv
 	
 fi
 }
-createtable 
+function listtable {
+	
+	echo which table you want to list? " (name without .csv)"
+read tb 2> /dev/null
+if [ -f "$tb.csv" ]
+       then
+awk -F,  '{print $0}' $tb.csv
+else 
+	echo $tb is not a table 
+fi
+
+}
+function menue {
+clear 
+echo chose from options "creat table" "list tables" "exit"
+case $choice in
+	"creat table") createtable
+		;;
+	"list tables") listtable 
+esac 
+}
+ menue
