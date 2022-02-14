@@ -26,6 +26,10 @@ echo creat table with  name : $tbname.csv
 	
 fi
 }
+function listtables  {
+
+ls
+}
 function listtable {
 	
 	echo which table you want to list? " (name without .csv)"
