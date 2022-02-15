@@ -191,7 +191,7 @@ tput setaf 4
 echo "All Databases Thar Esixt: "
 tput sgr0
 
-ls ./DB
+ls #./database
 }
 ###################################################################
 function whichdb {
@@ -262,7 +262,7 @@ function dropDB(){
 #just remove the directory if exist
 printf "Would You Write The Database's Name: "
 read dbname
-cd ./DB
+#cd ./database
 rm -dr $dbname
 cd ..
 }
