@@ -1,0 +1,104 @@
+#!/usr/bin/bash
+
+#This is part One that deal with directory
+
+#fundamental knoledge for user
+#-----------------------------
+tput setaf 1 #1 for red
+tput bold
+echo  Hello, This is Database Managment System
+echo 'Created Using Bash Script'
+tput sgr0
+
+function printScreen(){
+printf 'Choose:
+ 1) Create Database
+ 2) List Database
+ 3) Connect to Database 
+ 4) Drop Database 
+ 5) Exit \n'
+}
+
+function createDB(){
+tput bold 
+printf "Would You Write The Name Of Your Database:"
+tput sgr0
+
+read dbname
+echo "$dbname"
+#check if DB (directory Exist or not)
+cd ./DB
+# I use -w in grep to search in the exact name
+if ls|grep -w "$dbname";
+then
+	echo the db exist
+fi
+if  !(ls | grep -w "$dbname");
+then
+	mkdir -p $dbname
+	echo Done
+fi
+cd ..
+}
+
+function dropDB(){
+#just remove the directory if exist
+printf "Would You Write The Database's Name: "
+read dbname
+cd ./DB
+rm -dr $dbname
+cd ..
+}
+
+function connectDB(){
+#simply enter the directory (DB)
+printf "Enter Batabase Name to connect:\t"
+read $dbname
+echo
+ls
+if ls|grep -w "$dbname";
+then
+cd ./DB/"$dbms"
+touch file
+fi
+echo
+ls
+cd ..
+echo
+ls
+}
+
+function listDB(){
+tput bold
+tput setaf 4
+echo "All Databases Thar Esixt: "
+tput sgr0
+
+ls ./DB
+}
+
+while(true)
+do
+printScreen   #note, we dont use () after function name
+read num
+case $num in
+1) createDB
+;;
+2) listDB
+;;
+3) connectDB
+;;
+4) dropDB
+;;
+5) 
+break
+;;
+*)
+tput setaf 1 
+echo 'This Is Not In The List'
+tput sgr0 
+;;
+esac
+
+done
+
