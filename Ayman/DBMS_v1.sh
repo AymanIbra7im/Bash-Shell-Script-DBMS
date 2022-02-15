@@ -8,11 +8,12 @@ if [ -f "tbname.csv" ]
 then
 	echo already exist 
 #if [ -z "$tbname.csv" ]
+then
 #	echo table name cant be null ;
 
   else 
        	touch $tbname.csv
-	echo how many colums ypu want to add
+	echo how many colums you want to add
 	read colum_no
 
 	for (( i=0 ; i<$colum_no ; i+=1 ))
